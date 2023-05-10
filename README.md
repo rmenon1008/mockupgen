@@ -1,11 +1,20 @@
 # `mockupgen`
-A tool for generating 2D and 3D device mockups from a screenshot.
+A tool for generating 3D device mockups from a screenshot.
+
+<br>
 
 ![](images/example.png)
 
 # Installation
 ```
 pip install mockupgen
+```
+
+Alternatively, from source:
+```
+git clone https://github.com/rmenon1008/mockupgen.git
+cd mockupgen
+pip install .
 ```
 
 # Usage
