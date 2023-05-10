@@ -1,7 +1,5 @@
 import os
-import sys
 import json
-import argparse
 
 from colorama import init as colorama_init
 from colorama import Fore, Style
@@ -30,8 +28,7 @@ def get_valid_template(mockups, mockup):
         for m in mockups:
             if m['name'].lower() == mockup.lower():
                 return m
-    # _print('Invalid mockup selection', color='red')
-    print(_r('Invalid mockup selection'))
+    print(_r('Invalid template selection'))
     print()
     return None
 
@@ -51,11 +48,6 @@ def main():
     # parser.add_argument('--reset-templates', action='store_true', help='clear the templates directory to rerun setup', default=False)
     args = parser.parse_args()
 
-    # # Reset the templates if requested
-    # if args.reset_templates:
-    #     app_data.reset_templates()
-    #     exit(0)
-
     # Generate the mockup list from the mockups folder
     if args.custom_template_dir:
         norm_path = os.path.normpath(args.custom_template_dir)
@@ -66,7 +58,6 @@ def main():
         print()
         template_dir = norm_path
     else:
-        # template_dir = app_data.get_template_dir()
         template_dir = DEFAULT_TEMPLATE_DIR
 
     # Load the mockup info
