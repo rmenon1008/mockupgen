@@ -2,7 +2,7 @@
   {
     "name": "Macbook Air 13 Space Gray (White Background)",
     "author": "Anthony Boyd",
-    "author_profile": "https://www.anthonyboyd.graphics/",
+    "backlink": "https://www.anthonyboyd.graphics/mockups/m2-macbook-air-mockup-2/",
     "base_file": "macbook_air_gray/template.png",
     "mask_file": "macbook_air_gray/mask.png",
     "screen_points": [
@@ -17,7 +17,7 @@
   {
     "name": "Macbook Pro 13 Matte Black (Black Background)",
     "author": "Anthony Boyd",
-    "author_profile": "https://www.anthonyboyd.graphics/",
+    "backlink": "https://www.anthonyboyd.graphics/mockups/isometric-matte-black-2017-macbook-pro-mockup/",
     "base_file": "macbook_pro_black/template.png",
     "mask_aspect_ratio": 1.6,
     "screen_points": [
@@ -32,7 +32,7 @@
   {
     "name": "Surface Laptop Silver (Light Blue Background)",
     "author": "Anthony Boyd",
-    "author_profile": "https://www.anthonyboyd.graphics/",
+    "backlink": "https://www.anthonyboyd.graphics/mockups/isometric-surface-laptop-3-mockup/",
     "base_file": "surface_laptop_silver/template.png",
     "mask_aspect_ratio": 1.5,
     "screen_points": [
@@ -47,7 +47,7 @@
   {
     "name": "iPhone 14 Pro Max (Transparent Background)",
     "author": "Anthony Boyd",
-    "author_profile": "https://www.anthonyboyd.graphics/",
+    "backlink": "https://www.anthonyboyd.graphics/mockups/iphone-14-pro-max-mockup-2/",
     "base_file": "iphone_14_pro_max_gray/template.png",
     "mask_file": "iphone_14_pro_max_gray/mask.png",
     "screen_points": [

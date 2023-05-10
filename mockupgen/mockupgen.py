@@ -100,7 +100,7 @@ def main():
         exit(1)
     
     # List the templates
-    template = get_valid_template(template_info, args.m)
+    template = get_valid_template(template_info, args.t)
     while not template:
         print('Available templates:')
         for i, m in enumerate(template_info):
@@ -112,9 +112,9 @@ def main():
 
     if 'author' in template:
         print(f'Mockup created by {_g(template["author"])}')
-        if 'author_profile' in template:
-            print(f'Find them at {_g(template["author_profile"])}')
-        print()
+    if 'backlink' in template:
+        print(f'Original template: {_g(template["backlink"])}')
+    print()
 
     # Generate the mockup
     generated_mockup = generate_mockup(template_dir, args.screenshot, template, args.w, args.crop, args.brightness, args.contrast)
