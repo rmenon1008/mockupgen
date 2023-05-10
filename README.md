@@ -1,9 +1,9 @@
-# `mockupgen`
+# mockupgen
 A tool for generating 3D device mockups from a screenshot.
 
 <br>
 
-![](images/example.png)
+![](https://www.rohanmenon.com/media/example.png)
 
 # Installation
 ```
