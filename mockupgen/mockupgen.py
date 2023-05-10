@@ -111,7 +111,7 @@ def main():
     print(f'Generating mockup for {_b(template["name"])}')
 
     if 'author' in template:
-        print(f'Mockup created by {_g(template["author"])}')
+        print(f'Template created by {_g(template["author"])}')
     if 'backlink' in template:
         print(f'Original template: {_g(template["backlink"])}')
     print()
