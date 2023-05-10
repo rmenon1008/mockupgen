@@ -6,17 +6,12 @@ import argparse
 from colorama import init as colorama_init
 from colorama import Fore, Style
 
-# from mockupgen.helpers import _r, _b, _g, _c, _m, ColoredArgParser
-# from mockupgen.image_processing import generate_mockup, save_image
-
 try:
     from helpers import _r, _b, _g, _c, _m, ColoredArgParser
     from image_processing import generate_mockup, save_image
 except ImportError:
     from .helpers import _r, _b, _g, _c, _m, ColoredArgParser
     from .image_processing import generate_mockup, save_image
-
-# from .app_data import get_mockups
 
 
 colorama_init()

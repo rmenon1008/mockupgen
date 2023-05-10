@@ -4,10 +4,6 @@ import cv2
 import numpy as np
 from colorama import Fore, Style
 
-# from mockupgen.helpers import _r, _b, _g, _c, _m
-
-# from helpers import _r, _b, _g, _c, _m
-
 try:
     from helpers import _r, _b, _g, _c, _m
 except ImportError:
