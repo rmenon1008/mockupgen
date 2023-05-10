@@ -25,7 +25,7 @@ OPTION:
 A number of templates come preinstalled with the tool. They are all based on mockups created by [Anthony Boyd](https://www.anthonyboyd.graphics/). 
 
 Instead of using the preinstalled templates, you can supply your own by specifying `--custom-template-dir`. The directory should contain an `info.json` file and all the required images. It should look something like this:
-```json
+```jsonc
 // info.json
 // Note: All paths are relative to this file
 
@@ -39,7 +39,7 @@ Instead of using the preinstalled templates, you can supply your own by specifyi
             [896, 654],
             [1471, 985],
             [1471, 555]
-        ]
+        ],
 
         // One of the two options below must be specified
         "mask_file": "mask.png",   // An image used to mask the screenshot (alpha channel used)
@@ -47,7 +47,7 @@ Instead of using the preinstalled templates, you can supply your own by specifyi
 
         // Optional fields
         "brightness": 1.0,         // Brightness adjustment of the screenshot
-        "contrast": 1.0,           // Contrast adjustment of the screenshot
+        "contrast": 1.0            // Contrast adjustment of the screenshot
     },
     ...
 ]
