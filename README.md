@@ -24,8 +24,9 @@ OPTION:
 ```
 
 # Templates
-A number of templates come preinstalled with the tool. They are all based on mockups created by [Anthony Boyd](https://www.anthonyboyd.graphics/). 
+A number of templates come preinstalled with the tool. They are all based on mockups created by [Anthony Boyd](https://www.anthonyboyd.graphics/). You can see the available templates with `mockupgen --list`.
 
+## Custom templates
 Instead of using the preinstalled templates, you can supply your own by specifying `--custom-template-dir`. The directory should contain an `info.json` file and all the required images. It should look something like this:
 ```jsonc
 // info.json
@@ -43,9 +44,10 @@ Instead of using the preinstalled templates, you can supply your own by specifyi
             [1471, 555]
         ],
 
-        // One of the two options below must be specified
+        // Only one of the two options below must be specified
         "mask_file": "mask.png",   // An image used to mask the screenshot (alpha channel used)
-        "mask_aspect_ratio": 1.0,  // The aspect ratio to mask the screenshot (assumes rectangular)
+        // OR
+        "mask_aspect_ratio": 1.0,  // Aspect ratio to mask the screenshot (assumes rectangular)
 
         // Optional fields
         "brightness": 1.0,         // Brightness adjustment of the screenshot
