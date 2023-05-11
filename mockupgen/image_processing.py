@@ -47,8 +47,6 @@ def _contrast(image, amount):
     image[:,:,3] = a
     return image
 
-
-
 def _over_composite(background, foreground):
     # Split out the alpha channel
     alpha_foreground = foreground[:,:,3] / 255.0
@@ -94,7 +92,7 @@ def save_image(image, output_file):
         cv2.imwrite('mockup.png', image)
         print(f'Saved mockup as {Fore.GREEN}mockup.png{Style.RESET_ALL}')
 
-def generate_mockup(mockup_dir, screenshot_file, mockup, output_width, crop, brightness, contrast):
+def generate_mockup(mockup_dir, screenshot_file, mockup, output_width, crop, rotate, brightness, contrast):
     ### STEP 1: Load the screenshot and the mockup
 
     # Load the screenshot and the mockup
@@ -152,6 +150,8 @@ def generate_mockup(mockup_dir, screenshot_file, mockup, output_width, crop, bri
         screenshot = _contrast(screenshot, contrast)
     if brightness:
         screenshot = _brightness(screenshot, brightness)
+    if rotate:
+        screenshot = np.rot90(screenshot, rotate)
 
 
 

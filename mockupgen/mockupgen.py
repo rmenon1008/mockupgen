@@ -40,6 +40,7 @@ def main():
     parser.add_argument('-t', metavar="TEMPLATE", help='template name or number')
     parser.add_argument('-o', metavar="OUTFILE", type=str, default=None, help='output file name (use extension to specify format)')
     parser.add_argument('-w', metavar="WIDTH", type=int, default=None, help='output width (will attempt to upscale)')
+    parser.add_argument('--rotate', metavar="R", type=int, default=0, help='number of times to rotate the screenshot 90 degrees ccw')
     parser.add_argument('--crop', action='store_true', help='crop instead of stretching the screenshot to fit the template', default=False)
     parser.add_argument('--brightness', metavar="B", type=float, default=1.0, help='screen brightness adjustment (default: 1.0)')
     parser.add_argument('--contrast', metavar="C", type=float, default=1.0, help='screen contrast adjustment (default: 1.0)')
@@ -103,7 +104,7 @@ def main():
     print()
 
     # Generate the mockup
-    generated_mockup = generate_mockup(template_dir, args.screenshot, template, args.w, args.crop, args.brightness, args.contrast)
+    generated_mockup = generate_mockup(template_dir, args.screenshot, template, args.w, args.crop, args.rotate, args.brightness, args.contrast)
 
     if generated_mockup is None:
         print(_r('Error generating mockup'))

@@ -26,6 +26,7 @@ OPTION:
   -o OUTFILE                   output file name (use extension to specify format)
   -w WIDTH                     output width (will upscale if requested)
   --crop                       crop instead of stretching the screenshot to fit the mockup
+  --rotate                     number of times to rotate the screenshot 90 degrees ccw
   --brightness B               screen brightness adjustment (default: 1.0)
   --contrast C                 screen contrast adjustment (default: 1.0)
   --list                       list available templates
