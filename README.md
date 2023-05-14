@@ -1,5 +1,5 @@
 # mockupgen
-A tool that can generate a 3D device mockup from a screenshot.
+A tool that generates a 3D device mockup from a screenshot.
 
 <br>
 
@@ -30,41 +30,45 @@ OPTION:
   --brightness B               screen brightness adjustment (default: 1.0)
   --contrast C                 screen contrast adjustment (default: 1.0)
   --list                       list available templates
-  --custom-template-dir DIR    use a custom directory of templates (see README.md)
+  --custom-templates PATH/URL  specify a custom directory of templates (see README.md)
 ```
 
 # Templates
-A number of templates come preinstalled with the tool. They are all based on mockups created by [Anthony Boyd](https://www.anthonyboyd.graphics/). You can see the available templates with `mockupgen --list`.
+The [`mockupgen-templates`](https://github.com/rmenon1008/mockupgen-templates) repository contains the default templates used by `mockupgen`. They are all based on mockups created by [Anthony Boyd](https://www.anthonyboyd.graphics/). You can see the available templates with `mockupgen --list`.
 
 ## Custom templates
-Instead of using the preinstalled templates, you can supply your own by specifying `--custom-template-dir`. The directory should contain an `info.json` file and all the required images. It should look something like this:
+Instead of using the default templates, you can supply your own by specifying `--custom-template-dir`. The directory or URL should contain an index.json file with the following format:
 ```jsonc
-// info.json
+// index.json
 // Note: All paths are relative to this file
 
-[
-    {
-        // Required fields
-        "name": "Example Template",
-        "base_file": "base.png",   // The device template image
-        "screen_points": [         // The pixel locations of the 4 corners of the screen
-            [896, 224],            // Starts in the top left and goes counter clockwise
-            [896, 654],
-            [1471, 985],
-            [1471, 555]
-        ],
+{
+    "index_version": 1.0,                  // Version of the template index
+    "templates": [
+        {
+            // Required fields
+            "name": "Macbook Pro 16 Silver (Green Background)",
+            "slug": "mbp-16-silver-green", // Try to follow device-size-color-background format
+            "base_file": "base.png",       // The device template image
+            "screen_points": [             // The pixel locations of the 4 corners of the screen
+                [896, 224],                // Starts in the top left and goes counter clockwise
+                [896, 654],
+                [1471, 985],
+                [1471, 555]
+            ],
 
-        // Only one of the two options below must be specified
-        "mask_file": "mask.png",   // An image used to mask the screenshot (alpha channel used)
-        // OR
-        "mask_aspect_ratio": 1.0,  // Aspect ratio to mask the screenshot (assumes rectangular)
+            // Only one of the two options below must be specified
+            "mask_file": "mask.png",  // An image used to mask the screenshot (alpha channel used)
+            // OR
+            "mask_aspect_ratio": 1.0, // Aspect ratio to mask the screenshot (assumes rectangular)
 
-        // Optional fields
-        "brightness": 1.0,         // Brightness adjustment of the screenshot
-        "contrast": 1.0            // Contrast adjustment of the screenshot
-    },
-    ...
-]
+            // Optional fields
+            "brightness": 1.0,        // Brightness adjustment of the screenshot
+            "contrast": 1.0           // Contrast adjustment of the screenshot
+        },
+        ...
+    ]
+}
 ```
 
 # About

@@ -1,4 +1,5 @@
 import os
+import urllib.request
 
 import cv2
 import numpy as np
@@ -8,6 +9,7 @@ try:
     from helpers import _r, _b, _g, _c, _m
 except ImportError:
     from .helpers import _r, _b, _g, _c, _m
+
 
 def _center_crop(image, aspect_ratio):
     image_aspect_ratio = image.shape[1] / image.shape[0]
@@ -28,6 +30,20 @@ def _center_crop(image, aspect_ratio):
     return image
 
 
+def _read_image(image_path_or_url, fmt=cv2.IMREAD_UNCHANGED):
+    if image_path_or_url.startswith('http'):
+        try:
+            resp = urllib.request.urlopen(image_path_or_url)
+            image = np.asarray(bytearray(resp.read()), dtype="uint8")
+            image = cv2.imdecode(image, fmt)
+        except urllib.error.HTTPError:
+            print(_r(f'Error fetching image: {image_path_or_url}'))
+            exit(1)
+    else:
+        image = cv2.imread(image_path_or_url, fmt)
+    return image
+
+
 def _brightness(image, amount):
     a = image[:,:,3]
     hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
@@ -39,6 +55,7 @@ def _brightness(image, amount):
     image[:,:,3] = a
     return image
 
+
 def _contrast(image, amount):
     a = image[:,:,3]
     amount = amount * 127 - 127
@@ -46,6 +63,7 @@ def _contrast(image, amount):
     image = cv2.addWeighted(image, f, image, 0, 127*(1-f))
     image[:,:,3] = a
     return image
+
 
 def _over_composite(background, foreground):
     # Split out the alpha channel
@@ -92,13 +110,14 @@ def save_image(image, output_file):
         cv2.imwrite('mockup.png', image)
         print(f'Saved mockup as {Fore.GREEN}mockup.png{Style.RESET_ALL}')
 
+
 def generate_mockup(mockup_dir, screenshot_file, mockup, output_width, crop, rotate, brightness, contrast):
     ### STEP 1: Load the screenshot and the mockup
 
     # Load the screenshot and the mockup
-    screenshot = cv2.imread(screenshot_file, cv2.IMREAD_UNCHANGED)
+    screenshot = _read_image(screenshot_file, cv2.IMREAD_UNCHANGED)
     mockup_img_file = os.path.join(mockup_dir, mockup['base_file'])
-    mockup_img = cv2.imread(mockup_img_file, cv2.IMREAD_UNCHANGED)
+    mockup_img = _read_image(mockup_img_file, cv2.IMREAD_UNCHANGED)
 
     # Ensure the screenshot and mockup are valid
     if screenshot is None:
@@ -159,7 +178,7 @@ def generate_mockup(mockup_dir, screenshot_file, mockup, output_width, crop, rot
 
     if "mask_file" in mockup:
         # Load the mask
-        mockup_mask = cv2.imread(os.path.join(mockup_dir, mockup['mask_file']), cv2.IMREAD_UNCHANGED)
+        mockup_mask = _read_image(os.path.join(mockup_dir, mockup['mask_file']), cv2.IMREAD_UNCHANGED)
 
         # Ensure the mask is valid
         if mockup_mask is None:
