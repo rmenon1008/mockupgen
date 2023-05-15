@@ -30,6 +30,25 @@ def _center_crop(image, aspect_ratio):
     return image
 
 
+def _adjust_image(image, black_point, white_point):
+    a = image[:,:,3]
+    image = image[:,:,0:3]
+
+    # The white point and black point are hex strings, so convert them to RGB
+    white_point = tuple(int(white_point[i:i+2], 16) for i in (4, 2, 0))
+    black_point = tuple(int(black_point[i:i+2], 16) for i in (4, 2, 0))
+
+    # Scale and offset colors so that each color goes from black_point to white_point
+    scale = (np.array(white_point) - np.array(black_point)) / 255.0
+    offset = np.array(black_point)
+
+    # Apply the scale and offset
+    image = np.clip(image * scale + offset, 0, 255).astype(np.uint8)
+    image = np.dstack((image, a))
+
+    return image
+
+
 def _read_image(image_path_or_url, fmt=cv2.IMREAD_UNCHANGED):
     if image_path_or_url.startswith('http'):
         try:
@@ -77,7 +96,9 @@ def _over_composite(background, foreground):
 
 def _warn_for_different_aspect_ratios(ar1, ar2):
     if ar1 / ar2 > 1.1 or ar2 / ar1 > 1.1:
-        print(_r(f'Warning: The screenshot was stretched significantly to fit the template. Use --crop to crop the screenshot instead.'))
+        print(_r(f'Warning: The screenshot was stretched significantly to fit the template.)'))
+        print(_r( "         Use --crop to crop the screenshot instead."))
+        print()
 
 
 def _mask_image(image, mask):
@@ -159,6 +180,8 @@ def generate_mockup(mockup_dir, screenshot_file, mockup, output_width, crop, rot
     mockup_upscale_factor *= 4
 
     # Adjust the screenshot based on the mockup options
+    if "black_white_point" in mockup:
+        screenshot = _adjust_image(screenshot, mockup['black_white_point'][0], mockup['black_white_point'][1])
     if "contrast" in mockup:
         screenshot = _contrast(screenshot, mockup['contrast'])
     if "brightness" in mockup:
@@ -231,12 +254,8 @@ def generate_mockup(mockup_dir, screenshot_file, mockup, output_width, crop, rot
         masked_screenshot,
         matrix,
         (mockup_img.shape[1], mockup_img.shape[0]),
-        borderMode=cv2.BORDER_TRANSPARENT
+        flags=cv2.INTER_NEAREST
     )
-    
-    # Blur the screenshot slightly
-    warped_screenshot = cv2.blur(warped_screenshot, (2, 2))
-
 
 
     ### STEP 5: Composite the screenshot onto the mockup and resize

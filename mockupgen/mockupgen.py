@@ -99,7 +99,7 @@ def main():
         print(f'Using custom template directory: {_b(args.custom_templates)} (version {_b(template_version)})')
     else:
         template_list, template_version, template_dir = get_template_index(DEFAULT_TEMPLATE_DIR)
-        print(f'Template index version {_b(template_version)}')
+        print(f'Using {_b("mockupgen-templates")} (version {_b(template_version)})')
 
     # List the templates if requested
     if args.list:

@@ -63,6 +63,8 @@ Instead of using the default templates, you can supply your own by specifying `-
             "mask_aspect_ratio": 1.0, // Aspect ratio to mask the screenshot (assumes rectangular)
 
             // Optional fields
+            "black_white_point": ["292826", "D9DCDD"], // Black and white points
+                                                       // for color correction
             "brightness": 1.0,        // Brightness adjustment of the screenshot
             "contrast": 1.0           // Contrast adjustment of the screenshot
         },
