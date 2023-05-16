@@ -96,7 +96,7 @@ def _over_composite(background, foreground):
 
 def _warn_for_different_aspect_ratios(ar1, ar2):
     if ar1 / ar2 > 1.1 or ar2 / ar1 > 1.1:
-        print(_r(f'Warning: The screenshot was stretched significantly to fit the template.)'))
+        print(_r(f'Warning: The screenshot was stretched significantly to fit the template.'))
         print(_r( "         Use --crop to crop the screenshot instead."))
         print()
 
