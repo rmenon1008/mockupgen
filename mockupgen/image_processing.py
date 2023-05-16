@@ -107,7 +107,7 @@ def _mask_image(image, mask):
     return image
 
 
-def save_image(image, output_file):
+def save_image(image, output_file, default_name):
     # Get extension if specified
     extension = None
     if output_file:
@@ -128,8 +128,8 @@ def save_image(image, output_file):
             cv2.imwrite(output_file + '.png', image)
             print(f'Saved mockup as {Fore.GREEN}{output_file + ".png"}{Style.RESET_ALL}')
     else:
-        cv2.imwrite('mockup.png', image)
-        print(f'Saved mockup as {Fore.GREEN}mockup.png{Style.RESET_ALL}')
+        cv2.imwrite(default_name, image)
+        print(f'Saved mockup as {Fore.GREEN}{default_name}{Style.RESET_ALL}')
 
 
 def generate_mockup(mockup_dir, screenshot_file, mockup, output_width, crop, rotate, brightness, contrast):

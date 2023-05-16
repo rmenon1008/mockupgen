@@ -138,7 +138,8 @@ def main():
         print(_r('Error generating mockup'))
         exit(1)
 
-    save_image(generated_mockup, args.o)
+    default_name = os.path.splitext(os.path.basename(args.screenshot))[0] + '_mockup.png'
+    save_image(generated_mockup, args.o, default_name)
 
 
 if __name__ == '__main__':
