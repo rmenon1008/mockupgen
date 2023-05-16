@@ -34,7 +34,7 @@ OPTION:
 ```
 
 # Templates
-The [`mockupgen-templates`](https://github.com/rmenon1008/mockupgen-templates) repository contains the default templates used by `mockupgen`. They are all based on mockups created by [Anthony Boyd](https://www.anthonyboyd.graphics/). You can see the available templates with `mockupgen --list`.
+The [`mockupgen-templates`](https://github.com/rmenon1008/mockupgen-templates) repository contains the default templates used by `mockupgen`. Most are based on the fabulous work of [Anthony Boyd](https://www.anthonyboyd.graphics/). You can see the available templates with `mockupgen --list`.
 
 ## Custom templates
 Instead of using the default templates, you can supply your own by specifying `--custom-template-dir`. The directory or URL should contain an index.json file with the following format:
@@ -74,6 +74,6 @@ Instead of using the default templates, you can supply your own by specifying `-
 ```
 
 # About
-Mockups typically require expensive and slow image processing tools to create. While these can create very realistic mockups, they're very manual and usually overkill for the blog post thumbnail I'm trying to create.
+Mockups typically require expensive and slow image processing tools to create. While these can create realistic mockups, they're very manual and usually overkill for the blog post thumbnail I'm trying to create.
 
 The tool uses opencv to mask, warp and composite screenshots onto a template. Right now, it doesn't do any lighting or shadow effects.
