@@ -37,7 +37,7 @@ OPTION:
 The [`mockupgen-templates`](https://github.com/rmenon1008/mockupgen-templates) repository contains the default templates used by `mockupgen`. Most are based on the fabulous work of [Anthony Boyd](https://www.anthonyboyd.graphics/). You can see the available templates with `mockupgen --list`.
 
 ## Custom templates
-Instead of using the default templates, you can supply your own by specifying `--custom-template-dir`. The directory or URL should contain an index.json file with the following format:
+Instead of using the default templates, you can supply your own by specifying `--custom-templates`. The directory or URL should contain an index.json file with the following format:
 ```jsonc
 // index.json
 // Note: All paths are relative to this file
