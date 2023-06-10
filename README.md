@@ -1,5 +1,7 @@
 # mockupgen
-A tool that generates a 3D device mockup from a screenshot.
+A tool that generates a 3D device mockup from a screenshot. 
+
+Read my post on [how it works](https://www.rohanmenon.com/projects/mockupgen/)!
 
 <br>
 
