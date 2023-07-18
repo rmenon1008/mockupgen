@@ -45,33 +45,33 @@ Instead of using the default templates, you can supply your own by specifying `-
 // Note: All paths are relative to this file
 
 {
-    "index_version": 1.0,                  // Version of the template index
-    "templates": [
-        {
-            // Required fields
-            "name": "Macbook Pro 16 Silver (Green Background)",
-            "slug": "mbp-16-silver-green", // Try to follow device-size-color-background format
-            "base_file": "base.png",       // The device template image
-            "screen_points": [             // The pixel locations of the 4 corners of the screen
-                [896, 224],                // Starts in the top left and goes counter clockwise
-                [896, 654],
-                [1471, 985],
-                [1471, 555]
-            ],
+  "index_version": 1.0,              // Version of the template index
+  "templates": [
+    {
+      // Required fields
+      "name": "Macbook Pro 16 Silver (Green Background)",
+      "slug": "mbp-16-silver-green", // Try to follow device-size-color-background format
+      "base_file": "base.png",       // The device template image
+      "screen_points": [             // The pixel locations of the 4 corners of the screen
+        [896, 224],                  // Starts in the top left and goes counter clockwise
+        [896, 654],
+        [1471, 985],
+        [1471, 555]
+      ],
 
-            // Only one of the two options below must be specified
-            "mask_file": "mask.png",  // An image used to mask the screenshot (alpha channel used)
-            // OR
-            "mask_aspect_ratio": 1.0, // Aspect ratio to mask the screenshot (assumes rectangular)
+      // Only one of the two options below must be specified
+      "mask_file": "mask.png",  // An image used to mask the screenshot (alpha channel used)
+      // OR
+      "mask_aspect_ratio": 1.0, // Aspect ratio to mask the screenshot (assumes rectangular)
 
-            // Optional fields
-            "black_white_point": ["292826", "D9DCDD"], // Black and white points
-                                                       // for color correction
-            "brightness": 1.0,        // Brightness adjustment of the screenshot
-            "contrast": 1.0           // Contrast adjustment of the screenshot
-        },
-        ...
-    ]
+      // Optional fields
+      "black_white_point": ["292826", "D9DCDD"],  // Black and white points
+                                                  // for color correction
+      "brightness": 1.0,         // Brightness adjustment of the screenshot
+      "contrast": 1.0            // Contrast adjustment of the screenshot
+    },
+    ...
+  ]
 }
 ```
 
